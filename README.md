@@ -20,7 +20,7 @@ Admins can log in, manage products, upload images, and monitor inventory using c
 - **Multi-step product creation form**
 - Strong input validation using **Zod**
 - **Image upload** using **Cloudinary**
-- Product images displayed in dashboard table
+- Product images displayed in the dashboard table
 - Inventory analytics and insights:
   - Total products
   - Total stock
@@ -70,3 +70,16 @@ Password: admin123
 ```bash
 git clone https://github.com/Sresthkh/ecommerce-admin-dashboard.git
 cd ecommerce-admin-dashboard
+
+
+---
+
+## 🌍 Live Deployment
+
+👉 https://ecommerce-admin-dashboard-3h5x.vercel.app/admin
+
+---
+
+## 🎥 Demo Video
+
+👉 (Demo video link will be added here)

@@ -5,12 +5,9 @@ It features a brand-new **modern minimalist aesthetic** with dynamic page-specif
 
 ---
 
-## 🌍 Live Deployment (Demo Link)
+## 🐙 Source Code (GitHub Repository)
 
-👉 **[View the Live Demo](https://ecommerce-admin-dashboard-3h5x.vercel.app)**
-👉 **[Go directly to the Admin Panel](https://ecommerce-admin-dashboard-3h5x.vercel.app/admin)**
-
-*(Note: You will need to log in using the dummy credentials provided below.)*
+👉 **[View on GitHub](https://github.com/Sresthkh/ecommerce-admin-dashboard)**
 
 ---
 

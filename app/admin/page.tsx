@@ -18,13 +18,12 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  await connectDB();
-
   /* ===== Fetch & Normalize MongoDB Data (RSC-safe) ===== */
   let products: any[] = [];
   let dbError = false;
 
   try {
+    await connectDB();
     const rawProducts = await Product.find().lean();
     products = rawProducts.map((p: any) => ({
       _id: p._id.toString(),
@@ -36,7 +35,7 @@ export default async function AdminPage() {
       createdAt: new Date(p.createdAt).toISOString(),
     }));
   } catch (error) {
-    console.error("Failed to fetch products:", error);
+    console.error("Failed to fetch products or connect to DB:", error);
     dbError = true;
   }
 

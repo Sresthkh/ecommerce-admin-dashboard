@@ -21,6 +21,7 @@ export default async function AdminPage() {
   /* ===== Fetch & Normalize MongoDB Data (RSC-safe) ===== */
   let products: any[] = [];
   let dbError = false;
+  let dbErrorMessage = "";
 
   try {
     await connectDB();
@@ -34,9 +35,10 @@ export default async function AdminPage() {
       sales: p.sales ?? 0,
       createdAt: new Date(p.createdAt).toISOString(),
     }));
-  } catch (error) {
+  } catch (error: any) {
     console.error("Failed to fetch products or connect to DB:", error);
     dbError = true;
+    dbErrorMessage = error?.message || String(error);
   }
 
   /* ===== Metrics ===== */
@@ -69,6 +71,9 @@ export default async function AdminPage() {
       {dbError && (
         <div style={{ background: "rgba(244, 63, 94, 0.15)", border: "1px solid #fb7185", color: "#fb7185", padding: "16px", borderRadius: "12px", marginBottom: "20px" }}>
           <strong>⚠️ Database Connection Error:</strong> MONGODB_URI is not configured correctly. Please add it to your Vercel Environment Variables.
+          <div style={{ marginTop: "8px", fontSize: "12px", fontFamily: "monospace", color: "var(--text-muted)" }}>
+            Details: {dbErrorMessage}
+          </div>
         </div>
       )}
 

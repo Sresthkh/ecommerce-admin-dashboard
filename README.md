@@ -5,9 +5,14 @@ It features a brand-new **modern minimalist aesthetic** with dynamic page-specif
 
 ---
 
-## 🐙 Source Code (GitHub Repository)
+## 🚀 Open Directly in Browser
 
-👉 **[View on GitHub](https://github.com/Sresthkh/ecommerce-admin-dashboard)**
+Click the links below to instantly open and run this project right in your browser—no downloads or setup required!
+
+👉 **[Open in GitHub Codespaces](https://codespaces.new/Sresthkh/ecommerce-admin-dashboard)**
+👉 **[Open in StackBlitz](https://stackblitz.com/github/Sresthkh/ecommerce-admin-dashboard)**
+
+*(You can also press the `.` key on your keyboard while viewing the [GitHub Repository](https://github.com/Sresthkh/ecommerce-admin-dashboard) to instantly open the web editor!)*
 
 ---
 

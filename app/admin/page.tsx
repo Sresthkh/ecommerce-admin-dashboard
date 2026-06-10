@@ -25,9 +25,6 @@ export default async function AdminPage() {
   let dbError = false;
 
   try {
-    if (!process.env.MONGODB_URI) {
-      throw new Error("MONGODB_URI is missing");
-    }
     const rawProducts = await Product.find().lean();
     products = rawProducts.map((p: any) => ({
       _id: p._id.toString(),

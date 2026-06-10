@@ -21,17 +21,27 @@ export default async function AdminPage() {
   await connectDB();
 
   /* ===== Fetch & Normalize MongoDB Data (RSC-safe) ===== */
-  const rawProducts = await Product.find().lean();
+  let products: any[] = [];
+  let dbError = false;
 
-  const products = rawProducts.map((p: any) => ({
-    _id: p._id.toString(),
-    name: p.name,
-    price: p.price,
-    stock: p.stock,
-    category: p.category || "General",
-    sales: p.sales ?? 0,
-    createdAt: new Date(p.createdAt).toISOString(),
-  }));
+  try {
+    if (!process.env.MONGODB_URI) {
+      throw new Error("MONGODB_URI is missing");
+    }
+    const rawProducts = await Product.find().lean();
+    products = rawProducts.map((p: any) => ({
+      _id: p._id.toString(),
+      name: p.name,
+      price: p.price,
+      stock: p.stock,
+      category: p.category || "General",
+      sales: p.sales ?? 0,
+      createdAt: new Date(p.createdAt).toISOString(),
+    }));
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    dbError = true;
+  }
 
   /* ===== Metrics ===== */
   const totalProducts = products.length;
@@ -60,6 +70,12 @@ export default async function AdminPage() {
       <Breadcrumbs />
 
       {/* ===== Hero Section ===== */}
+      {dbError && (
+        <div style={{ background: "rgba(244, 63, 94, 0.15)", border: "1px solid #fb7185", color: "#fb7185", padding: "16px", borderRadius: "12px", marginBottom: "20px" }}>
+          <strong>⚠️ Database Connection Error:</strong> MONGODB_URI is not configured correctly. Please add it to your Vercel Environment Variables.
+        </div>
+      )}
+
       <div className="card" style={{ padding: "40px", marginBottom: "30px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div>
           <h1 style={{ fontSize: "32px", marginBottom: "8px" }} className="accent-gradient">

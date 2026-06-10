@@ -3,26 +3,7 @@ import React from "react";
 
 function navItem(href: string, label: string) {
   return (
-    <Link
-      href={href}
-      style={{
-        padding: "12px 16px",
-        borderRadius: "8px",
-        textDecoration: "none",
-        color: "var(--text-main)",
-        display: "block",
-        transition: "all 0.2s ease",
-        fontWeight: 500,
-      }}
-      onMouseOver={(e) => {
-        e.currentTarget.style.backgroundColor = "var(--bg-input)";
-        e.currentTarget.style.color = "var(--accent-color)";
-      }}
-      onMouseOut={(e) => {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = "var(--text-main)";
-      }}
-    >
+    <Link href={href} className="nav-item">
       {label}
     </Link>
   );
@@ -62,28 +43,7 @@ export default function AdminLayout({
         </nav>
 
         <form action="/api/auth/signout" method="POST" style={{ marginTop: "auto" }}>
-          <button
-            style={{
-              width: "100%",
-              marginTop: "30px",
-              background: "transparent",
-              border: "1px solid var(--border-color)",
-              color: "var(--text-muted)",
-              padding: "12px",
-              borderRadius: "8px",
-              fontWeight: 600,
-              cursor: "pointer",
-              transition: "all 0.2s"
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = "var(--bg-input)";
-              e.currentTarget.style.color = "var(--text-main)";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "var(--text-muted)";
-            }}
-          >
+          <button className="btn-signout">
             Sign Out
           </button>
         </form>
